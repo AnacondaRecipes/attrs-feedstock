@@ -17,7 +17,7 @@ build:
   script: python setup.py bdist_wheel --universal;python -m wheel install --force dist/*.whl
 
 requirements:
-  build:
+  host:
     - python
     - setuptools
     - wheel
