@@ -21,10 +21,6 @@ requirements:
     - setuptools
   run:
     - python
-    - zope
-    - zope.interface
-    - pympler
-    - hypothesis
 
 test:
   imports:
