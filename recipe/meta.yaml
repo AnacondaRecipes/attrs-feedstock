@@ -27,6 +27,14 @@ requirements:
 test:
   imports:
     - attr
+  requires:
+    - coverage
+    - hypothesis
+    - pip
+    - pympler
+    - six
+  commands:
+    - pip check
 
 about:
   home: https://attrs.readthedocs.io/en/stable/
