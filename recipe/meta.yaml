@@ -28,11 +28,7 @@ test:
   imports:
     - attr
   requires:
-    - coverage
-    - hypothesis
     - pip
-    - pympler
-    - six
   commands:
     - pip check
 
