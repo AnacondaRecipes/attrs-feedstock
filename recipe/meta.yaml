@@ -1,6 +1,6 @@
 {% set name = "attrs" %}
-{% set version = "21.4.0" %}
-{% set sha256 = "626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd" %}
+{% set version = "22.1.0" %}
+{% set sha256 = "29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,6 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
   number: 0
   script: python -m pip install . --no-deps --ignore-installed
 
@@ -21,6 +20,7 @@ requirements:
     - pip
     - python
     - setuptools
+    - wheel
   run:
     - python
 
@@ -28,16 +28,12 @@ test:
   imports:
     - attr
   requires:
-    - coverage
-    - hypothesis
     - pip
-    - pympler
-    - six
   commands:
     - pip check
 
 about:
-  home: https://attrs.readthedocs.io/en/stable/
+  home: https://www.attrs.org/
   license: MIT
   license_family: MIT
   license_file: LICENSE
@@ -50,7 +46,7 @@ about:
     concise and correct software without slowing down your code. For that, it
     gives you a class decorator and a way to declaratively define the
     attributes on that class:
-  doc_url: https://attrs.readthedocs.io/en/stable/
+  doc_url: https://www.attrs.org/
   dev_url: https://github.com/python-attrs/attrs
 
 extra:
