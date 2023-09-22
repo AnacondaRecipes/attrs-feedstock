@@ -1,26 +1,26 @@
 {% set name = "attrs" %}
-{% set version = "22.1.0" %}
-{% set sha256 = "29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6" %}
+{% set version = "23.1.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015
+  patches:
+    - patches/001-remove-fancy-pypi-readme.patch
 
 build:
   number: 0
-  script: python -m pip install . --no-deps --ignore-installed
+  script: python -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - pip
     - python
-    - setuptools
-    - wheel
+    - hatchling
+    - hatch-vcs
   run:
     - python
 
