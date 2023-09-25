@@ -16,6 +16,9 @@ build:
   script: python -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
+  build:
+    - m2-patch  # [win]
+    - patch     # [not win]
   host:
     - pip
     - python
@@ -27,10 +30,19 @@ requirements:
 test:
   imports:
     - attr
+  source_files:
+    - tests
   requires:
+    - hypothesis
+    - cloudpickle
+    - pytest-xdist
+    - psutil
+    - mypy >=1.1.1
     - pip
+    - pytest >=4.3.0
   commands:
     - pip check
+    - pytest --fixtures tests -vv
 
 about:
   home: https://www.attrs.org/
