@@ -9,7 +9,7 @@ source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 5cfb1b9148b5b086569baec03f20d7b6bf3bcacc9a42bebf87ffaaca362f6346
   patches:
-    - patches/0001-replace-hatch-fancy-instances.patch
+    - patches/001-remove-fancy-pypi-readme
 
 build:
   number: 0
