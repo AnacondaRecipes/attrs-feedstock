@@ -1,29 +1,29 @@
-From cf4a6c16634a20dda78aa08869496469e5d5d99a Mon Sep 17 00:00:00 2001
-From: Serhii Kupriienko
-Date: Fri, 22 Sep 2023 16:39:27 +0300
-Subject: [PATCH] Fix deps
+From 25e3bba7976275945a30a471fc720c7830a65ff7 Mon Sep 17 00:00:00 2001
+From: Jaida Rice <jaidarice@gmail.com>
+Date: Tue, 15 Oct 2024 14:41:00 -0700
+Subject: [PATCH] remove-fancy-pypi-readme
 
 ---
- pyproject.toml                                | 37 +--------
- 1 files changed, 1 insertions(+), 36 deletions(-)
+pyproject.toml | 42 +-----------------------------------------
+ 1 file changed, 1 insertion(+), 41 deletions(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index fb8fae3..010357e 100644
+index 93b3f40..2c94457 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -1,7 +1,7 @@
  # SPDX-License-Identifier: MIT
- 
+
  [build-system]
--requires = ["hatchling", "hatch-vcs", "hatch-fancy-pypi-readme"]
+-requires = ["hatchling", "hatch-vcs", "hatch-fancy-pypi-readme>=23.2.0"]
 +requires = ["hatchling", "hatch-vcs"]
  build-backend = "hatchling.build"
- 
- 
-@@ -75,41 +75,6 @@ raw-options = { local_scheme = "no-local-version" }
+
+
+@@ -84,46 +84,6 @@ raw-options = { local_scheme = "no-local-version" }
  [tool.hatch.build.targets.wheel]
  packages = ["src/attr", "src/attrs"]
- 
+
 -[tool.hatch.metadata.hooks.fancy-pypi-readme]
 -content-type = "text/markdown"
 -
@@ -56,12 +56,14 @@ index fb8fae3..010357e 100644
 -
 ----
 -
--[Full changelog](https://www.attrs.org/en/stable/changelog.html)
+-[Full changelog →](https://www.attrs.org/en/stable/changelog.html)
 -"""
 -
- 
- # Make coverage play nicely with pytest-xdist.
- [tool.hatch.build.targets.wheel.hooks.autorun]
--- 
-2.39.0
-
+-# Point sponsor image URLs to versions.
+-[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+-pattern = 'docs\/_static\/sponsors'
+-replacement = 'https://www.attrs.org/en/$HFPR_VERSION/_static/sponsors'
+-
+ [[tool.sponcon.sponsors]]
+ title = "Variomedia AG"
+ url = "https://www.variomedia.de/"
