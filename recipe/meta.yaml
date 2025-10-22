@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  script: python -m pip install . --no-deps --no-build-isolation -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   skip: true  # [py<39]
 
 requirements:
@@ -25,24 +25,34 @@ requirements:
     - python
 
 test:
-  imports:
-    - attr
   source_files:
     - tests
+  imports:
+    - attr
+    - attr._cmp
+    - attr._compat
+    - attr._make
+    - attr._next_gen
+    - attr.converters
+    - attr.exceptions
+    - attr.filters
+    - attr.setters
+    - attr.validators
   requires:
     - hypothesis
     - cloudpickle
     - pytest-xdist
     - psutil
-    - mypy >=1.1.1
+    - mypy
     - pip
-    - pytest >=4.3.0
+    - pytest
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - pytest --fixtures tests -vv
 
 about:
-  home: https://www.attrs.org/
+  home: https://www.attrs.org
   license: MIT
   license_family: MIT
   license_file: LICENSE
@@ -54,7 +64,7 @@ about:
     concise and correct software without slowing down your code. For that, it
     gives you a class decorator and a way to declaratively define the
     attributes on that class:
-  doc_url: https://www.attrs.org/
+  doc_url: https://www.attrs.org
   dev_url: https://github.com/python-attrs/attrs
 
 extra:
