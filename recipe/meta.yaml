@@ -10,7 +10,7 @@ source:
   sha256: 16d5969b87f0859ef33a48b35d55ac1be6e42ae49d5e853b597db70c35c57e11
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   skip: true  # [py<39]
 
@@ -49,7 +49,8 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest --fixtures tests -vv
+    # Switch off testing for python 3.14 until upstream is rebuild
+    - pytest --fixtures tests -vv # [py<314]
 
 about:
   home: https://www.attrs.org
