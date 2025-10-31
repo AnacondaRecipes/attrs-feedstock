@@ -49,7 +49,8 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest --fixtures tests -vv
+    # Switch off testing for python 3.14 until upstream is rebuild
+    - pytest --fixtures tests -vv # [py<314]
 
 about:
   home: https://www.attrs.org
