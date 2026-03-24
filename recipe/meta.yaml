@@ -1,5 +1,5 @@
 {% set name = "attrs" %}
-{% set version = "25.4.0" %}
+{% set version = "26.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 16d5969b87f0859ef33a48b35d55ac1be6e42ae49d5e853b597db70c35c57e11
+  sha256: d03ceb89cb322a8fd706d4fb91940737b6642aa36998fe130a9bc96c985eff32
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   skip: true  # [py<39]
 
